@@ -1,0 +1,29 @@
+<!-- fragment_news.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".sports">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextColor="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_margin="7dp"
+        app:tabBackground="@drawable/tab_bk"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        />
+
+</LinearLayout>

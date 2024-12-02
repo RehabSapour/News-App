@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">News</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welecome in News App</string>
+    <string name="searchhint">أبحث هنا</string>
+    <string name="pick">اختر الفئة التي تهتم بها</string>
+    <string name="nav_open" translatable="false">Open</string>
+    <string name="nav_close" translatable="false">Close</string>
+    <string name="settings">الأعدادات</string>
+    <string name="categories">الأقسام</string>
+    <string name="searchBtn">بحث</string>
+    <string name="search">بحث</string>
+    <string name="sports">رياضة</string>
+    <string name="business">أعمال</string>
+    <string name="science">  علوم  </string>
+    <string name="technology">تكنولوجيا</string>
+    <string name="Favorite">المفضلة</string>
+    <string name="log_out">خروج</string>
+    <string name="App">الاخبار</string>
+    <string name="select_language">اختر اللغة</string>
+
+
+</resources>

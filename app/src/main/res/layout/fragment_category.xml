@@ -1,0 +1,228 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".category"
+    android:background="@color/white"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dashBoard"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:background="@color/ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="152dp"
+            android:text="@string/pick"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dashBoard"
+        android:background="@drawable/title_bk"
+        >
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="true"
+            android:rowCount="2"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sports_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/category_bk"
+                    >
+
+                    <ImageView
+                        android:id="@+id/sports_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bluefootball"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/sports"
+                        android:textAlignment="center"
+                        android:textColor="#205FA0"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+
+                        />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/science_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/category_bk"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/chemistry"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/science"
+                        android:textAlignment="center"
+                        android:textColor="#205FA0"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+
+                        />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/business_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/category_bk"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bussiness"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textColor="#205FA0"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+
+                        />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/technology_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/category_bk"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:src="@drawable/social"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/technology"
+                        android:textSize="22sp"
+                        android:textAlignment="center"
+                        android:textColor="#205FA0"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+
+                        />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

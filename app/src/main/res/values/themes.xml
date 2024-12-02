@@ -1,0 +1,37 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Test" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#00264d</item>
+        <item name="colorPrimaryVariant">#00264d</item>
+        <item name="android:statusBarColor">#00264d</item>
+    </style>
+
+    <style name="Theme.Test" parent="Base.Theme.Test" />
+
+<!--    <style name="Theme.test" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        <item name="android:colorBackground">@color/light_background</item>-->
+<!--        <item name="android:textColor">@color/primary_text</item>-->
+<!--        <item name="android:colorPrimary">@color/dark_background</item>-->
+<!--        <item name="android:colorPrimaryDark">@color/dark_background</item>-->
+<!--        <item name="android:colorAccent">@color/secondary_text</item>-->
+<!--    </style>-->
+
+
+
+
+
+
+
+
+
+
+    <style name="ToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25sp</item> <!-- Define the text size here -->
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>
