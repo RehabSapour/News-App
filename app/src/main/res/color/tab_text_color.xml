@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Selected Tab Text Color -->
+    <item android:color="@color/ActionBar" android:state_selected="true" />
+    <!-- Pressed Tab Text Color (optional) -->
+    <item android:color="@color/ActionBar" android:state_pressed="true" />
+    <!-- Default (Unselected) Tab Text Color -->
+    <item android:color="@color/white" />
+</selector>

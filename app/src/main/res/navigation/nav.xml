@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/category"
-        android:name="com.example.test.category"
-        android:label="@string/App"
+        android:name="com.example.test.ui.category"
+        android:label=""
         tools:layout="@layout/fragment_category" >
         <action
             android:id="@+id/action_category_to_sports"
@@ -23,17 +23,20 @@
     </fragment>
     <fragment
         android:id="@+id/sports"
-        android:name="com.example.test.sports"
+        android:name="com.example.test.ui.sports"
         android:label="@string/sports"
         tools:layout="@layout/fragment_sports" >
         <action
             android:id="@+id/action_sports_to_category"
             app:destination="@id/category" />
+        <action
+            android:id="@+id/action_sports_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/favorite"
-        android:name="com.example.test.favorite"
+        android:name="com.example.test.ui.favorite"
         android:label="@string/Favorite"
         tools:layout="@layout/fragment_favorite" >
         <action
@@ -45,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/setting2"
-        android:name="com.example.test.setting"
+        android:name="com.example.test.ui.setting"
         android:label="@string/settings"
         tools:layout="@layout/fragment_setting" >
         <action
@@ -54,5 +57,30 @@
         <action
             android:id="@+id/action_setting2_to_favorite"
             app:destination="@id/favorite" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.test.ui.webViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" >
+        <action
+            android:id="@+id/action_webViewFragment_to_sports"
+            app:destination="@id/sports" />
+        <action
+            android:id="@+id/action_webViewFragment_to_category"
+            app:destination="@id/category" />
+        <action
+            android:id="@+id/action_webViewFragment_to_favorite"
+            app:destination="@id/favorite" />
+        <action
+            android:id="@+id/action_webViewFragment_to_setting2"
+            app:destination="@id/setting2" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.test.ui.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+
     </fragment>
 </navigation>

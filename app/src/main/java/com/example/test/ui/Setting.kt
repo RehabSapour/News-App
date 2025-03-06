@@ -1,10 +1,6 @@
-package com.example.test
+package com.example.test.ui
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.appcompat.app.AppCompatDelegate
+import com.example.test.R
+import com.example.test.sharedPreferences
 import java.util.Locale
-import kotlin.coroutines.CoroutineContext
 
 
 class setting : Fragment() {

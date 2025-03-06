@@ -6,24 +6,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".sports">
+    tools:context=".ui.sports">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="@color/ActionBar">-->
+<!--    <Toolbar-->
+<!--        android:id="@+id/toolbar2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:titleTextColor="@color/white"-->
+<!--        />-->
+<!--    </LinearLayout>-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabTextColor="@color/white"
+        app:tabTextColor="@color/tab_text_color"
         android:minHeight="?attr/actionBarSize"
-        android:layout_margin="7dp"
+        app:tabMode="scrollable"
+        android:layout_marginTop="8dp"
+        app:tabGravity="center"
         app:tabBackground="@drawable/tab_bk"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+        app:tabIndicator="@drawable/tab_bk"
+        app:tabIndicatorHeight="5dp"
+        />
+<!--        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />-->
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_margin="10dp"
         />
 
 </LinearLayout>

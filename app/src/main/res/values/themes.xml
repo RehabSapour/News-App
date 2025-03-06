@@ -6,7 +6,9 @@
         <item name="colorPrimary">#00264d</item>
         <item name="colorPrimaryVariant">#00264d</item>
         <item name="android:statusBarColor">#00264d</item>
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
+
 
     <style name="Theme.Test" parent="Base.Theme.Test" />
 
@@ -20,18 +22,18 @@
 
 
 
-
-
-
-
-
-
-
     <style name="ToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">25sp</item> <!-- Define the text size here -->
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="CustomSearchViewTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- Entered text color -->
+        <item name="android:textColorPrimary">@color/black</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">@color/secondary_text</item>
     </style>
 
 </resources>
