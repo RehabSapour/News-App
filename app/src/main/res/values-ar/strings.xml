@@ -15,6 +15,8 @@
     <string name="business">أعمال</string>
     <string name="science">  علوم  </string>
     <string name="technology">تكنولوجيا</string>
+    <string name="health">صحة</string>
+    <string name="entertainment">تسلية</string>
     <string name="Favorite">المفضلة</string>
     <string name="log_out">خروج</string>
     <string name="App">الاخبار</string>
