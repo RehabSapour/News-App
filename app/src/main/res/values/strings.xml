@@ -21,7 +21,12 @@
     <string name="log_out">Logout</string>
     <string name="App">News</string>
     <string name="select_language">Select Language</string>
-
+    <string name="dark_mode">dark mode</string>
+    <string name="light_mode">light mode</string>
+    <string name="font_size">Font Size</string>
+    <string name="_16">16</string>
+    <string name="setting">Setting</string>
+    <string name="stay_infromed_stay_ahead">Stay Infromed , Stay Ahead!</string>
 
     <string-array name="languages_array">
         <item>English</item>

@@ -1,61 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp">
-
-<!--    <ImageView-->
-<!--        android:id="@+id/newsimg"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="250dp"-->
-<!--        android:layout_margin="2dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:src="@drawable/newstest"-->
-<!--        />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/channel_name"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:text="BBC news"-->
-<!--        android:textSize="14sp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/newsimg" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/description"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="10dp"-->
-<!--        android:text="description of the news "-->
-<!--        android:textSize="18sp"-->
-<!--        android:paddingStart="3dp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/channel_name" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/time"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="18 hours ago"-->
-<!--        android:layout_margin="10dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/description" />-->
-
-
     <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/item_new"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
+         android:layout_margin="10dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -77,29 +30,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginHorizontal="20dp"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:gravity="start"
+                android:textSize="20sp"
+                android:fontFamily="@font/kanit_semibold"
+                android:textColor="@color/icons_color"
+                android:layout_marginStart="5dp"
                 android:text="BBC news" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/description"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:layout_gravity="start"
-                    android:layout_marginStart="10dp"
                     android:gravity="start"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="7dp"
                     android:text="description"
+                    android:fontFamily="@font/courgette"
                     android:textSize="20sp" />
 
             </LinearLayout>
+
 
             <TextView
                 android:id="@+id/time"
@@ -110,9 +68,24 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="end"
+                android:textColor="@color/icons_color"
+                android:fontFamily="@font/courgette"
                 android:text="10 hours ago" />
-
+            <TextView
+                android:id="@+id/see_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="See more"
+                android:textColor="@drawable/see_more_selector"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/courgette"
+                android:layout_gravity="end"
+                android:textSize="16sp"
+                android:drawableEnd="@drawable/arrow"
+            />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>

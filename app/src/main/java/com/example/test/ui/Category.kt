@@ -1,64 +1,94 @@
 package com.example.test.ui
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.test.R
-import com.example.test.api.NewsViewModel
 
 class category : Fragment() {
-
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         // make Actions
+
         Log.d("categoryFragment", "onCreateView: ")
 
         val view =  inflater.inflate(R.layout.fragment_category, container, false)
+        val isArabic = isArabicLocale()
 
-//        val args=Bundle()
-//        args.putString("category","sports")
-      //  findNavController().navigate(R.id.action_category_to_sports,args)
           view.findViewById<CardView>(R.id.sports_cardview).setOnClickListener{
-
-//                      val args=Bundle()
-//        args.putString("category","sports")
-            //  Navigation.findNavController(view).navigate(R.id.action_category_to_sports)
-              navigatetosportsFragment("sports")
+              handleCategoryClick(isArabic, "sports")
           }
 
         view.findViewById<CardView>(R.id.science_cardview).setOnClickListener {
-            navigatetosportsFragment("science")
-           // Navigation.findNavController(view).navigate(R.id.action_category_to_sports)
+            handleCategoryClick(isArabic,"science")
         }
+
         view.findViewById<CardView>(R.id.technology_cardview).setOnClickListener {
-            navigatetosportsFragment("technology")
-            //Navigation.findNavController(view).navigate(R.id.action_category_to_sports)
+            handleCategoryClick(isArabic,"technology")
         }
+
         view.findViewById<CardView>(R.id.business_cardview).setOnClickListener {
-            navigatetosportsFragment("business")
-          //  Navigation.findNavController(view).navigate(R.id.action_category_to_sports)
+            handleCategoryClick(isArabic,"business")
         }
         view.findViewById<CardView>(R.id.health_cardView).setOnClickListener {
-            navigatetosportsFragment("health")
-            //  Navigation.findNavController(view).navigate(R.id.action_category_to_sports)
+            handleCategoryClick(isArabic,"health")
+
         }
         view.findViewById<CardView>(R.id.entertainment_cardView).setOnClickListener {
-            navigatetosportsFragment("entertainment")
-            //  Navigation.findNavController(view).navigate(R.id.action_category_to_sports)
+            handleCategoryClick(isArabic,"entertainment")
         }
+
         return view
     }
 
+
+    private fun handleCategoryClick(isArabic: Boolean, category: String) {
+        if (isArabic) {
+            // Show "Fragment not found" dialog in Arabic
+            showFragmentNotFoundDialog()
+        } else {
+            // Navigate to the news fragment for non-Arabic locales
+            navigatetosportsFragment(category)
+        }
+    }
+
+    private fun isArabicLocale(): Boolean {
+        val currentLocale = requireContext().resources.configuration.locales[0]
+        return currentLocale.language == "ar" // Check if language is Arabic
+    }
+
+    @SuppressLint("MissingInflatedId")
+    private fun showFragmentNotFoundDialog() {
+        // Inflate custom layout
+        val dialogView = LayoutInflater.from(requireContext())
+            .inflate(R.layout.custom_dialog, null)
+
+        // Build dialog
+        val dialog = AlertDialog.Builder(requireContext(), R.style.CustomDialogStyle)
+            .setView(dialogView)
+            .create()
+
+        // Set transparent background to show rounded corners
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        // Handle OK button click
+        dialogView.findViewById<Button>(R.id.dialog_ok_button).setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
     private fun navigatetosportsFragment(category: String) {
         val bundle =Bundle().apply {
             putString("category",category)

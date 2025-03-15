@@ -1,6 +1,8 @@
 package com.example.test.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.SeekBar
 import android.widget.Spinner
+import android.widget.TextView
 import com.example.test.R
 import com.example.test.sharedPreferences
 import java.util.Locale
@@ -16,8 +20,8 @@ import java.util.Locale
 
 class setting : Fragment() {
    lateinit var languageSpinner :Spinner
-   // lateinit var modeSpinner: Spinner
-//    private lateinit var themeSpinner: Spinner
+   private lateinit var seekBar: SeekBar
+    private lateinit var sharedPreferencesforFont: SharedPreferences
 
     @SuppressLint("MissingInflatedId", "ResourceType")
     override fun onCreateView(
@@ -26,24 +30,18 @@ class setting : Fragment() {
     ): View? {
         val view= inflater.inflate(R.layout.fragment_setting, container, false)
 
-      //  sharedPreferences = requireContext().getSharedPreferences("setting", Context.MODE_PRIVATE)
         val languages = arrayOf("English" ,"Arabic")
         languageSpinner = view.findViewById(R.id.languageSpinner)
 
         val adapterlanguage:ArrayAdapter<String>? = activity?.let {
-            ArrayAdapter(
-                requireContext()
-                ,
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item
-               // R.layout.drop_down_item
-                ,
-                languages
-            )
+            ArrayAdapter(requireContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, languages)
         }
 
-            adapterlanguage?.setDropDownViewResource(R.layout.drop_down_item)
+        adapterlanguage?.setDropDownViewResource(R.layout.drop_down_item)
+
           languageSpinner.adapter=adapterlanguage
-          languageSpinner.setBackgroundResource(R.drawable.custom_spinner_shape) //
+          languageSpinner.setBackgroundResource(R.drawable.custom_spinner_shape)
+
         val savedLanguage= sharedPreferences?.getString("Language","English")
         val positionLanguage= adapterlanguage?.getPosition(savedLanguage)
         positionLanguage?.let { languageSpinner.setSelection(it) }
@@ -67,7 +65,40 @@ class setting : Fragment() {
             }
 
         }
+
+
+        /////////////////////////////////////////////////////////////////////////
+
+         FontSetUp(view)
+
         return view
+    }
+
+    private fun FontSetUp(view: View) {
+        seekBar = view.findViewById(R.id.fontSizeSeekBar)
+        val seekBarCounter = view.findViewById<TextView>(R.id.seekBarCounter)
+
+        sharedPreferencesforFont =
+            requireContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+        val savedFontSize = sharedPreferencesforFont.getInt("font_size", 16)
+        seekBar.progress = savedFontSize
+
+        // Set the initial value
+        seekBarCounter.text = seekBar.progress.toString()
+        // تغيير حجم الخط عند تحريك الـ SeekBar
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                seekBarCounter.text = progress.toString()
+                saveFontSize(progress)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+    }
+
+    private fun saveFontSize(size: Int) {
+        sharedPreferencesforFont.edit().putInt("font_size", size).apply()
     }
 
     private fun changeLanguage(selectLanguage: String) {
@@ -81,7 +112,6 @@ class setting : Fragment() {
         resources.updateConfiguration(config,resources.displayMetrics)
         requireActivity().recreate()
     }
-
     private fun savedLanguage(selectedLanguage:String){
         sharedPreferences?.edit()?.putString("Language" , selectedLanguage)?.apply()
     }

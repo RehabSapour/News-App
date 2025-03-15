@@ -5,5 +5,5 @@
     <!-- Pressed Tab Text Color (optional) -->
     <item android:color="@color/ActionBar" android:state_pressed="true" />
     <!-- Default (Unselected) Tab Text Color -->
-    <item android:color="@color/white" />
+    <item android:color="@color/still_white" />
 </selector>

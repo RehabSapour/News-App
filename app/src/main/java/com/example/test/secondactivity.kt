@@ -6,108 +6,90 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
-import android.widget.EditText
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.Switch
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.NightMode
+import androidx.appcompat.widget.SwitchCompat
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.example.test.api.NewsViewModel
-import com.example.test.ui.ListFragment
 import com.google.android.material.navigation.NavigationView
 import java.util.Locale
 import kotlin.math.log
 
 var sharedPreferences : SharedPreferences ?= null //global
+var sharedPreferences2 : SharedPreferences ?= null //global
+
 class secondactivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var toolbar: Toolbar
-    lateinit var searchView: SearchView
-    private val viewModel: NewsViewModel by viewModels()
+    private var nightMode: Boolean=false
+    private lateinit var editor : SharedPreferences.Editor
+    private lateinit var pickText:TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Apply saved language setting
-        Log.d("secondActivity", "onCreate: ")
+
         sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE)
         changeLanguage() // making to changing the language
+        sharedPreferences2 = getSharedPreferences("Mode",Context.MODE_PRIVATE)
+
         setContentView(R.layout.activity_secondactivity)
-
-        /////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-         searchView = findViewById(R.id.searchView)
-        val q = searchView.query.toString()
-
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-////                if (!query.isNullOrEmpty()) {
-////                    viewModel.setsearchQuery(query)
-////                }
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                newText?.let {
-//                    viewModel.setsearchQuery(it)
-//                }
-//                return true
-//            }
-//        })
-        ////////////////////////////////////////////////////////////////////////////////////
-
-        drawerLayout = findViewById(R.id.drawer)
         val navigationView: NavigationView = findViewById(R.id.navigationView)
 
-        // Set up NavController and AppBarConfiguration
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHostFragment.navController
-        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
 
+        setUpNavigation(navigationView)
+        setUpTheme(navigationView)
 
-        // Set up Toolbar with NavController
-         toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        /////////////// search menu //////////////////////////////
+    }
 
+    private fun setUpNavigation(navigationView: NavigationView){
+         drawerLayout = findViewById(R.id.drawer)
+         pickText=findViewById(R.id.tv_pick_in_toolbar_constraints)
+         // Set up NavController and AppBarConfiguration
+         val navHostFragment =
+             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+         val navController = navHostFragment.navController
+         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
 
-        //////////////////////////////////
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
-        // Set up Navigation Drawer with NavController
-        NavigationUI.setupWithNavController(navigationView, navController)
-        // Handle Navigation Drawer item clicks
-        navigationView.setNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.setting -> navController.navigate(R.id.setting2)
-                R.id.category -> navController.navigate(R.id.category)
-                R.id.favorite -> navController.navigate(R.id.favorite)
+         // Set up Toolbar with NavController
+         toolbar = findViewById(R.id.toolbar)
+         setSupportActionBar(toolbar)
+
+         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+         // Set up Navigation Drawer with NavController
+         NavigationUI.setupWithNavController(navigationView, navController)
+         // Handle Navigation Drawer item clicks
+         navigationView.setNavigationItemSelectedListener { item ->
+             when (item.itemId) {
+                 R.id.setting -> navController.navigate(R.id.setting2)
+                 R.id.category -> navController.navigate(R.id.category)
+                 R.id.logout->finishAffinity()
+                 //finishAffinity() finishes the current activity and all other activities
+
+             }
+             drawerLayout.closeDrawers() // Close the drawer after selecting an item
+             true
+         }
+        // Add OnDestinationChangedListener
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.setting2) {
+                pickText.text=getString(R.string.setting)
+            } else {
+                pickText.text=getString(R.string.pick)
             }
-            drawerLayout.closeDrawers() // Close the drawer after selecting an item
-            true
         }
-
-      }
+     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragmentContainerView)
@@ -132,5 +114,47 @@ class secondactivity : AppCompatActivity() {
     fun updateToolbarTitle(title: String) {
         toolbar.title = title
     }
+
+
+   private fun setUpTheme(navigationView: NavigationView){
+       val menu: Menu = navigationView.menu
+
+       // Find the menu item that contains the Switch
+       val switchItem = menu.findItem(R.id.nav_dark_mode) // Replace with your Switch ID
+       if(switchItem == null){
+           Log.d("switchItem", "onCreate:null ")
+       }
+       val switchView = switchItem.actionView?.findViewById<SwitchCompat>(R.id.switchDarkMode)
+       nightMode = sharedPreferences2?.getBoolean("night", false) ?: false
+
+       if(nightMode){
+           if (switchView != null) {
+               AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+               switchView.isChecked= true
+               switchItem?.setIcon(R.drawable.whitesun)
+
+           }
+       }
+
+       switchView?.setOnClickListener {
+           if(nightMode){
+               AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+               sharedPreferences2?.edit()?.let {
+                   editor = it
+               } ?: Log.e("Error", "SharedPreferences2 is null")
+               editor.putBoolean("night",false).commit()
+               switchItem?.setIcon(R.drawable.baseline_dark_mode_24)
+
+           }else{
+               AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+               sharedPreferences2?.edit()?.let {
+                   editor = it
+               } ?: Log.e("Error", "SharedPreferences2 is null")
+               editor.putBoolean("night",true).commit()
+           }
+
+       }
+    }
+
 
 }

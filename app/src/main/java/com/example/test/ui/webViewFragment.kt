@@ -1,20 +1,15 @@
 package com.example.test.ui
-
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.FrameLayout
-import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import com.example.test.R
 import com.example.test.databinding.FragmentWebViewBinding
 
@@ -28,7 +23,6 @@ class webViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentWebViewBinding.inflate(layoutInflater,container,false)
-      //  Navigation.findNavController(View).navigate(R.id.action_webViewFragment_to_sports)
         return binding.root
     }
 
@@ -37,25 +31,11 @@ class webViewFragment : Fragment() {
 
         val url = arguments?.getString("url") ?: ""
         loadingWebView(url) // Function to load web view page
-
-//        if (binding.webView.canGoBack()) {
-//            binding.webView.goBack()
-//        } else {
-//            findNavController(view).navigate(R.id.action_webViewFragment_to_sports)
-//        }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(url: String):webViewFragment{
-            val fragment = webViewFragment()
-            val args = Bundle()
-            args.putString("url", url)
-            fragment.arguments = args
-            return fragment
+        binding.share.setOnClickListener {
+            showShareDialog(url)
         }
-
     }
+
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun loadingWebView(url:String){
@@ -69,12 +49,10 @@ class webViewFragment : Fragment() {
             Log.e("WebViewFragment", "Error initializing views: ${e.message}")
         }
 
-//        //hideToolbarAndExpand()
-
             binding.webView.settings.javaScriptEnabled = true
             binding.webView.webViewClient = WebViewClient()
             Log.d("urll", "loadingWebViewurl${url}: ")
-           binding.webView.loadUrl(url)
+            binding.webView.loadUrl(url)
 
     }
 
@@ -84,6 +62,11 @@ class webViewFragment : Fragment() {
        constraintLayoutToolbar.visibility = View.VISIBLE // when pressed back the toolbar visible
     }
 
-
+    private fun showShareDialog(newsUrl: String) {
+        val shareIntend = Intent(Intent.ACTION_SEND)
+        shareIntend.type = "text/plain" // type of message to send
+        shareIntend.putExtra(Intent.EXTRA_TEXT, newsUrl)
+        context?.startActivity(Intent.createChooser(shareIntend, ""))
+    }
 
 }

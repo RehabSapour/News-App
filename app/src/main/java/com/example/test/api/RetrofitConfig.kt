@@ -11,9 +11,6 @@ object RetrofitConfig {
     }
 
     fun getServiceInstance():NewsApiService{
-        return getRetrofitInstance().create<NewsApiService>() // using this to return reference from interface to allow me call news function
-    }
-    fun getServiceInstance2():apiInterface{
-        return getRetrofitInstance().create<apiInterface>() // using this to return reference from interface to allow me call news function
+        return getRetrofitInstance().create<NewsApiService>() // using this to return reference from interface(NewsApiService) -> to allow me call news function
     }
 }

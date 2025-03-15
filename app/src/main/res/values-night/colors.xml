@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FFFFFFFF</color>
+    <color name="still_black">#FF000000</color>
+    <color name="white">#2C2A2A</color>
+    <color name="still_white">#FFFFFFFF</color>
+    <color name="ActionBar">#0a1b39</color>
+    <color name="colorPrimary">#0a1b39</color>
+    <color name="grey">#A9A9A9</color>
+    <color name="light_background">#121212</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#A9A9A9</color>
+    <color name="colorAccent">#7E95AF</color>
+    <color name="icons_color">#FFFFFFFF</color>
+    <color name="colorBottomCardStart">#0C2C55</color>
+    <color name="colorBottomCardEnd">#001A33</color>
+    <color name="colorToolbarStart">#061F35</color>
+    <color name="colorToolbarEnd">#1C537A</color>
+    <color name="tabbk">#A9A9A9</color>
+</resources>

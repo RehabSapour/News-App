@@ -1,9 +1,6 @@
 package com.example.test.api
-
 import com.example.test.api.datamodel.newsResponse
 import com.example.test.api.datamodel.sourceResponce
-import com.example.test.api.utils.Constants
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

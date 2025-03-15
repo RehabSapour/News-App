@@ -25,7 +25,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
             android:textSize="18sp"
-            android:textColor="@color/ActionBar"
+            android:textColor="@color/icons_color"
             />
 
         <Spinner
@@ -39,26 +39,44 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_language"
+            android:text="@string/font_size"
             android:textStyle="bold"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:textSize="18sp"
-            android:textColor="@color/ActionBar"
+
+            android:textColor="@color/icons_color"
             />
 
-        <Spinner
-            android:id="@+id/modeSpinner"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:weightSum="3"
+            android:orientation="vertical">
+        <SeekBar
+            android:id="@+id/fontSizeSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="30"
+            android:min="12"
+            android:progressTint="@color/icons_color"
+             android:thumbTint="@color/icons_color"
+            android:progress="16" />
+        <TextView
+            android:id="@+id/seekBarCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="end"
+            android:text="@string/_16"
+           android:textSize="14sp"
+            android:layout_marginEnd="12dp"
+           android:textColor="@color/icons_color" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

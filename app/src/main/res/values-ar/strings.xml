@@ -21,6 +21,10 @@
     <string name="log_out">خروج</string>
     <string name="App">الاخبار</string>
     <string name="select_language">اختر اللغة</string>
-
+    <string name="dark_mode">الوضع الليلي</string>
+    <string name="light_mode">الوضع النهاري</string>
+    <string name="font_size">حجم الخط</string>
+    <string name="_16">١٦</string>
+    <string name="setting">الاعدادات</string>
 
 </resources>
