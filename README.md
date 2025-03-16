@@ -6,7 +6,7 @@
 - Lottie Animations: Smooth and visually appealing user interface enhancements.
 - Optimized for Performance: Fast loading times and responsive design.
 # Technologies Used 
--Language: Kotlin
+- Language: Kotlin
 - Architecture: MVVM (Model-View-ViewModel)
 - Networking: Retrofit for API interactions
 - UI Components: RecyclerView, Material Design, Lottie Animations
