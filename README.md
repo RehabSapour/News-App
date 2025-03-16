@@ -11,5 +11,6 @@
 - Networking: Retrofit for API interactions
 - UI Components: RecyclerView, Material Design, Lottie Animations
 - Image Loading: Picasso for seamless image rendering
-![App Screenshot 1](assets/images/screenshot1.png)
+ 
+![image alt](assets/images/screenshot1.png)
 # I Hope You Give Me Your Feedback 
