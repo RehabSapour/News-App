@@ -12,5 +12,7 @@
 - UI Components: RecyclerView, Material Design, Lottie Animations
 - Image Loading: Picasso for seamless image rendering
  
-![image alt](assets/images/screenshot1.png)
+
+
+![image alt](https://github.com/RehabSapour/News-App/blob/bb92d2b93e698a84d74114ae75cf1e0bfdf525ba/news_app.jpg)
 # I Hope You Give Me Your Feedback 
